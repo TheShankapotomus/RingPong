@@ -31,8 +31,12 @@ Upon button press the white LED stays lit until button release.
 
 #### 3. Network Application
 
-A) While the button is pressed a UDP socket is opened to ___test.ring.com:13469___ ; Every 1 second a 2 byte packet with an integer storing the current sent packet count will be sent through the socket. 
-C) Upon button release the counter is reset and the socket is closed. 
+a.) While the button is pushed, a UDP socket shall be opened with a server at the domain "test.ring.com" on port 13469. Every 1 second, the device shall send a packet of 2 bytes to the server with a counter, starting at value 0 and increasing by 1 every packet.
+
+b.) For every 2-byte UDP packet sent to the server, the server shall return back a 2-byte packet on the same port echoing the counter. If no echo is received within 500ms or the value returned from the server is not equal to the value sent from the device, the device shall re-send the current value. This shall continue until the correct value is received from the server, at which point the device will increment the counter and proceed as normal. 
+
+c.) When the button is released, the socket shall be closed and the counter shall be reset.
+
 #### 4. Battery Operation
 
 * If the battery voltage is <3.5V the red LED will blink at a 2Hz rate with a 25% duty cycle, and all other functionality will be disabled
