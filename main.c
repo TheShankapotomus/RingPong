@@ -1,26 +1,21 @@
-//
-// Created by Josh Shank on 2/18/18.
-//
-#include "main.h"
-
 #include <stdint.h>
-#include <sys/socket.h>
-
-#define RECV_ADDR "test.ring.com"
-#define RECV_PORT 13469
+#include "hw_setup.h"
+#include "udp_server.h"
 
 
 int main(){
 
     uint16_t counter = 0;
-    int udp_sock = socket(AF_INET, SOCK_DGRAM, 0);
 
-    if(udp_sock < 0){
-        perror("Issue arose on socket creation! Exiting...");
-        return 1;
+    while(1){
+        if(button_state() == 1 && battery_level() >= MIN_VOLTAGE){
+
+            activate_led(WHITE_LED, HIGH);
+
+            //light white led, activate network fucntionality
+        }else if(battery_level() < MIN_VOLTAGE){
+
+            low_power_indicator(HIGH);
+        }
     }
-
-    return 0;
 }
-
-voltage
