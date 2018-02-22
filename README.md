@@ -87,7 +87,7 @@ to look at the top few messages to see the state of all the peripherals.
 ./ring-pong 0 1.3 #simulates no button press, and 1.3V battery charge 
 ```
 
-## Engineering and Design 
+## Engineering and Design <a name="design"></a>
 
 #### Project Layout
 
