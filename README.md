@@ -67,8 +67,10 @@ an [open-source example](https://stackoverflow.com/questions/7004702/how-can-i-c
 #### Testing 
 
 The _stdout_ is verbose in terms of logging the actions that happen; quickly the 
-red LED flashing and the udp_server sending/receiving flood the terminal with output. Be sure
-to look at the top few messages to see the state of all the peripherals.
+red LED flashing and the udp_server sending/receiving flood the terminal with output. The top few 
+messages show the state of all the peripherals if they haven't been updating. Also note: for testing 
+the __TARGET\_ADDR__ domain name macro found in _udp_server.h_ was appended to __localhost__ 
+in the _/etc/hosts_ file. 
 
 ```bash
 ./ring-pong 1 3.5 #simulates button press, and 3.5V battery charge
