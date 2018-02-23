@@ -10,8 +10,8 @@
 
 ## Preface <a name="preface"></a>
 
-This project was designed with Clang on OS X, version 8, and the application 
-was tested standalone in a terminal enviroment. The dev requirements for this project can be
+This project was designed with Clang on OS X and the application 
+was tested standalone in a terminal environment. The dev requirements for this project can be
 found in the CHALLENGE.MD file under the root of this project.
 
 #### Tool Stack
@@ -43,14 +43,14 @@ example usage: ./ring-pong 1 3.5
 
 ## Build and Test <a name="build"></a>
 
-After cloning the project down go into the base directory and create two subdirectories.
+After cloning the project, go into the base directory and create two subdirectories.
 ```bash
 cd ./RingPong
 mkdir bin obj
 
 ```
 
-Following this a simple ___make___ call should compile and drop the binary into the ./RingPong/bin folder
+Following this, a simple ___make___ call should compile and drop the binary into the _./RingPong/bin_ folder
 
 ```bash
 make #build the binary
@@ -60,13 +60,13 @@ make clean #remove the object files
 make remove #remove the binary and object files 
 ```
 
-The Makefile was originally hand rolled from simple commands, but for better project/directory management 
+The __Makefile__ was originally hand-rolled from simple commands, but for better project management 
 an [open-source example](https://stackoverflow.com/questions/7004702/how-can-i-create-a-makefile-for-c-projects-with-src-obj-and-bin-subdirectories)
- was used that allowed for much more precise control
+ was used that allowed for a refined directory structure.
  
 #### Testing 
 
-The stdout is pretty verbose in terms of logging the actions that happen; quickly the 
+The _stdout_ is verbose in terms of logging the actions that happen; quickly the 
 red LED flashing and the udp_server sending/receiving flood the terminal with output. Be sure
 to look at the top few messages to see the state of all the peripherals.
 
@@ -97,17 +97,17 @@ File: hw_setup.c/.h
 
 File: udp_server.c/.h
     
--   Is the UDP server implementation, it uses a few global variables so that minimal state can be held while allowing
-control of sending and receiving to be handled outside of the scope of the file directly. A educational reference for this 
-development can be found at this [Rutgers tutorial](https://www.cs.rutgers.edu/~pxk/417/notes/sockets/udp.html); the 
+-   Is the UDP server implementation; it uses a few global variables so that minimal state can be held while allowing
+control of sending and receiving to be handled outside the scope of the file directly. An educational reference for this 
+development can be found at this [Rutger's tutorial](https://www.cs.rutgers.edu/~pxk/417/notes/sockets/udp.html); the 
 man pages for [recvfrom](https://linux.die.net/man/2/recvfrom) and [sendto](https://linux.die.net/man/2/sendto) were also
-used heavily.
+used.
 
 File: main.c
 
-- Imploys the CLI interface and main handling of the system logic. If it were to be implemented on a real
+- Imploys the CLI interface and main handling of the system logic. If it were implemented on a real
 embedded system, a loop that waits for a system signal would need to be employed around the main logic (the location of which
-is marked in the file). As such, testing is limited to the states that one can change through the CLI and dynamic change 
+is marked in _main.c_). As such, testing is limited to the states that one can change through the CLI and dynamic change 
 in system state is currently not possible. 
 
 #### ADC Implementation
@@ -125,7 +125,7 @@ made the equation come out to
 #### Low Battery Indication
 
 The embedded system has a red LED which must work at 2Hz and 25% duty cycle. 
-Deciding that the average LED pulse width is 1 second and the total signal period is 1 second
+With the average LED pulse width and the total signal period both at 1 second,
 a 25% duty cycle would end up being 1/4 the pulse width over a 1 second period. So in 1 second @ 
 2Hz the LED would be sent to a high state for two quarter pulse width periods. These are the sources for 
 [duty cycle](https://en.wikipedia.org/wiki/Duty_cycle) and [Hertz](https://en.wikipedia.org/wiki/Hertz) research.
